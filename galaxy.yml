@@ -1,0 +1,26 @@
+namespace: rhjhunt
+name: opensslca
+version: 1.0.0
+readme: README.md
+authors:
+  - "Jacob Hunt <jhunt@redhat.com>"
+description: Collection to create an OpenSSL Certificate Authority and sign client certificates
+license:
+  - GPL-3.0-or-later
+license_file: LICENSE
+tags:
+  - openssl
+  - certificateauthority
+  - certificate
+dependencies:
+  "community.crypto": "*"
+repository: https://github.com/rhjhunt/opensslca
+documentation: https://github.com/rhjhunt/opensslca/wiki
+homepage: https://github.com/rhjhunt/opensslca
+issues: https://github.com/rhjhunt/opensslca/issues
+build_ignore:
+  - '.vale.ini'
+  - '.yamllint'
+  - '.markdownlint.json'
+  - '.github'
+  - '.gitignore'
