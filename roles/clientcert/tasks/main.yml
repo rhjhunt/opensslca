@@ -18,10 +18,10 @@
       - digitalSignature
       - keyEncipherment
       - keyAgreement
-    key_usage_critical: yes
+    key_usage_critical: true
     extended_key_usage:
       - serverAuth
-    extended_key_usage_critical: yes
+    extended_key_usage_critical: true
     digest: sha256
     subject_alt_name:
       - "DNS:{{ clientcert_hostname }}"
