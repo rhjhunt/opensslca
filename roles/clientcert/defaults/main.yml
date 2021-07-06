@@ -6,10 +6,13 @@ clientcert_hostname: ""
 clientcert_country: ""
 
 # Client email address
-clientcert_email: ""
+clientcert_email: "{{ omit }}"
 
 # Client state or province name
-clientcert_state: ""
+clientcert_state_or_province: ""
 
 # Client organization
 clientcert_org: ""
+
+# Client certificate state
+clientcert_state: present

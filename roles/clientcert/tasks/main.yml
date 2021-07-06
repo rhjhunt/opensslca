@@ -3,6 +3,7 @@
   community.crypto.openssl_privatekey:
     path: "/etc/pki/CA/private/{{ clientcert_hostname }}.key.pem"
     mode: '0400'
+    state: "{{ clientcert_state }}"
 
 - name: Generate client Certificate Signing Request (CSR)
   community.crypto.openssl_csr_pipe:
@@ -10,7 +11,7 @@
     common_name: "{{ clientcert_hostname }}"
     country_name: "{{ clientcert_country }}"
     email_address: "{{ clientcert_email }}"
-    state_or_province_name: "{{ clientcert_state }}"
+    state_or_province_name: "{{ clientcert_state_or_province }}"
     organization_name: "{{ clientcert_org }}"
     key_usage:
       - nonRepudiation
@@ -36,3 +37,4 @@
     ownca_privatekey_passphrase: "{{ rootca_password }}"
     ownca_not_after: +3650d
     mode: '0444'
+    state: "{{ clientcert_state }}"
