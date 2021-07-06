@@ -46,18 +46,17 @@ Name | Description
 You can use the following example to create a Certificate Authority.
 
 ```yaml
----
 - name: Certificate Authority
-  hosts: rootca
+  hosts: localhost
   become: yes
-  vars:
-    rootca_country: US
-    rootca_email: jdoe@example.com
-    rootca_state_or_province: CA
-    rootca_org: Example Inc.
-    rootca_password: changeme
   roles:
-    - rhjhunt.opensslca.rootca
+    - role: rhjhunt.opensslca.rootca
+      vars:
+        rootca_country: US
+        rootca_email: jdoe@example.com
+        rootca_state_or_province: CA
+        rootca_org: Example Inc.
+        rootca_password: changeme
 ```
 
 ### Client Certificate
@@ -65,17 +64,16 @@ You can use the following example to create a Certificate Authority.
 You can use the following example to create a client certificate and sign the certificate.
 
 ```yaml
----
 - name: Certificate Authority
-  hosts: rootca
+  hosts: localhost
   become: yes
-  vars:
-    clientcert_country: US
-    clientcert_email: jdoe@example.com
-    clientcert_state_or_province: CA
-    clientcert_org: Example Inc.
-    rootca_password: changeme
-    clientcert_hostname: server.example.com
   roles:
-    - rhjhunt.opensslca.clientcert
+    - role: rhjhunt.opensslca.clientcert
+      vars:
+        clientcert_country: US
+        clientcert_email: jdoe@example.com
+        clientcert_state_or_province: CA
+        clientcert_org: Example Inc.
+        rootca_password: changeme
+        clientcert_hostname: server.example.com
 ```

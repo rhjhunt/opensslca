@@ -11,7 +11,7 @@ Version added: 1.0.0
 Synopsis
 --------
 
-- Create a private key, Certificate Signing Request (CSR) and certificate.
+- Create a Certificate Authority.
 
 Parameters
 ----------
@@ -41,14 +41,14 @@ Examples
     - name: Certificate Authority
       hosts: rootca
       become: yes
-      vars:
-        rootca_country: US
-        rootca_email: jdoe@example.com
-        rootca_state_or_province: CA
-        rootca_org: Example Inc.
-        rootca_password: changeme
       roles:
-        - rhjhunt.opensslca.rootca
+        - role: rhjhunt.opensslca.rootca
+          vars:
+            rootca_country: US
+            rootca_email: jdoe@example.com
+            rootca_state_or_province: CA
+            rootca_org: Example Inc.
+            rootca_password: changeme
 
 Authors
 ~~~~~~~

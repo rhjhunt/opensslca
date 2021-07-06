@@ -41,16 +41,16 @@ Examples
     - name: Certificate Authority
       hosts: rootca
       become: yes
-      vars:
-        clientcert_country: US
-        clientcert_email: jdoe@example.com
-        clientcert_state_or_province: CA
-        clientcert_org: Example Inc.
-        rootca_password: changeme
-        clientcert_hostname: server.example.com
       roles:
-        - rhjhunt.opensslca.clientcert
-
+        - role: rhjhunt.opensslca.clientcert
+          vars:
+            clientcert_country: US
+            clientcert_email: jdoe@example.com
+            clientcert_state_or_province: CA
+            clientcert_org: Example Inc.
+            rootca_password: changeme
+            clientcert_hostname: server.example.com
+            
 Authors
 ~~~~~~~
 

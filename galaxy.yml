@@ -1,14 +1,14 @@
 ---
 namespace: rhjhunt
 name: opensslca
-version: 1.0.0
+version: 1.0.1
 readme: README.md
 authors:
   - Jacob Hunt (https://github.com/rhjhunt)
 description: Collection to create an OpenSSL Certificate Authority and sign client certificates
 license:
   - GPL-3.0-or-later
-license_file: LICENSE
+license_file: null
 tags:
   - openssl
   - certificateauthority
