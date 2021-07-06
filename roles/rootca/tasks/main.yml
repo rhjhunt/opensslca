@@ -5,6 +5,7 @@
     state: directory
     owner: root
     group: root
+    mode: '0755'
   loop:
     - certs
     - crl
@@ -25,6 +26,7 @@
     state: touch
     owner: root
     group: root
+    mode: '0644'
 
 - name: Verify CA serial file exists
   stat:
@@ -35,6 +37,7 @@
   copy:
     dest: /etc/pki/CA/serial
     content: '1000'
+    mode: '0644'
   when: not serial_exists.stat.exists
 
 - name: Verify CA crlnumber file exists
@@ -46,15 +49,16 @@
   copy:
     dest: /etc/pki/CA/crlnumber
     content: '1000'
+    mode: '0644'
   when: not crlnumber_exists.stat.exists
 
-- name: Copy openssl.cnf into place
-  copy:
-    src: openssl.cnf
-    dest: /etc/pki/tls/openssl.cnf
-    owner: root
-    group: root
-    mode: '0644'
+#- name: Copy openssl.cnf into place
+#  copy:
+#    src: openssl.cnf
+#    dest: /etc/pki/tls/openssl.cnf
+#    owner: root
+#    group: root
+#    mode: '0644'
 
 - name: Create CA root key
   community.crypto.openssl_privatekey:

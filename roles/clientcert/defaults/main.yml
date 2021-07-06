@@ -1,2 +1,15 @@
 ---
-# defaults file for clientcert
+# Client common name (CN)
+clientcert_hostname: ""
+
+# Client country name
+clientcert_country: ""
+
+# Client email address
+clientcert_email: ""
+
+# Client state or province name
+clientcert_state: ""
+
+# Client organization
+clientcert_org: ""

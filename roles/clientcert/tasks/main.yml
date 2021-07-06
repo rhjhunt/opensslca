@@ -1,13 +1,13 @@
 ---
 - name: Genereate client private key
   community.crypto.openssl_privatekey:
-    path: "/etc/pki/CA/private/{{ client_hostname }}.key.pem"
+    path: "/etc/pki/CA/private/{{ clientcert_hostname }}.key.pem"
     mode: '0400'
 
 - name: Generate client Certificate Signing Request (CSR)
   community.crypto.openssl_csr_pipe:
-    privatekey_path: "/etc/pki/CA/private/{{ client_hostname }}.key.pem"
-    common_name: "{{ client_hostname }}"
+    privatekey_path: "/etc/pki/CA/private/{{ clientcert_hostname }}.key.pem"
+    common_name: "{{ clientcert_hostname }}"
     country_name: "{{ clientcert_country }}"
     email_address: "{{ clientcert_email }}"
     state_or_province_name: "{{ clientcert_state }}"
@@ -23,12 +23,12 @@
     extended_key_usage_critical: yes
     digest: sha256
     subject_alt_name:
-      - "DNS:{{ client_hostname }}"
+      - "DNS:{{ clientcert_hostname }}"
   register: client_csr
 
 - name: Generate client certificate
   community.crypto.x509_certificate:
-    path: "/etc/pki/CA/certs/{{ client_hostname }}.cert.pem"
+    path: "/etc/pki/CA/certs/{{ clientcert_hostname }}.cert.pem"
     csr_content: "{{ client_csr.csr }}"
     provider: ownca
     ownca_path: /etc/pki/CA/certs/ca.cert.pem

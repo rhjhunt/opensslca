@@ -188,6 +188,7 @@ dmypy.json
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode
 
-qa-test.yml
-ansible.cfg
+rootca.yml
+client.yml
 test-inv
+ansible.cfg
