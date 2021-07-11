@@ -24,11 +24,11 @@
           - "ca_result.subject.commonName == 'Certificate Authority'"
           - "ca_result.subject | length == 5"
           - "ca_result.issuer.commonName == 'Certificate Authority'"
-          - "ca_result.issuer | length == 5" 
+          - "ca_result.issuer | length == 5"
           - not ca_result.expired
           - ca_result.version == 3
           - "'Certificate Sign' in ca_result.key_usage"
-          - "ca_result.key_usage | length == 1" 
+          - "ca_result.key_usage | length == 1"
 
     - name: Get client certificate information
       community.crypto.x509_certificate_info:
