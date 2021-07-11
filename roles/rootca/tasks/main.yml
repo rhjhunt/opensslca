@@ -20,6 +20,11 @@
     group: root
     mode: '0700'
 
+- name: Verify index.txt file exists
+  stat:
+    path: /etc/pki/CA/index.txt
+  register: index_exists
+
 - name: Create index.txt file
   file:
     path: /etc/pki/CA/index.txt
@@ -27,6 +32,7 @@
     owner: root
     group: root
     mode: '0644'
+  when: not index_exists.stat.exists
 
 - name: Verify CA serial file exists
   stat:
@@ -62,7 +68,8 @@
     state: "{{ rootca_state }}"
 
 - name: Create CA CSR for self-signed certificate
-  community.crypto.openssl_csr_pipe:
+  community.crypto.openssl_csr:
+    path: /etc/pki/CA/csr/ca.cert.csr
     privatekey_path: /etc/pki/CA/private/ca.key.pem
     privatekey_passphrase: changeme
     common_name: Certificate Authority
@@ -78,12 +85,11 @@
     state_or_province_name: "{{ rootca_state_or_province }}"
     organization_name: "{{ rootca_org }}"
     digest: sha256
-  register: ca_csr
 
 - name: Create CA self-signed certifice from CSR
   community.crypto.x509_certificate:
     path: /etc/pki/CA/certs/ca.cert.pem
-    csr_content: "{{ ca_csr.csr }}"
+    csr_path: /etc/pki/CA/csr/ca.cert.csr
     privatekey_path: /etc/pki/CA/private/ca.key.pem
     privatekey_passphrase: "{{ rootca_password }}"
     provider: selfsigned
