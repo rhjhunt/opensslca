@@ -1,32 +1,27 @@
-name: Molecule
-
-on:
-  push:
-    branches:
-      - main
-      - release/v*
-  pull_request:
-    branches:
-      - main
-
+---
+name: Molecule Test
+on: [push, pull_request]
 jobs:
-  molecule:
+  build:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      max-parallel: 4
       matrix:
-        scenario:
-          - centos-8
+        python-version: ["3.9", "3.10"]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
-          path: "${{ github.repository }}"
-      - name: Molecule
-        uses: gofrolist/molecule-action@v2
+          path: opensslca
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
-          molecule_options: --debug --base-config molecule/_shared/base.yml
-          molecule_command: test
-          molecule_args: --scenario-name ${{ matrix.scenario }}
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r opensslca/requirements.txt
+      - name: Test with molecule
+        run: |
+          cd opensslca
+          molecule test
