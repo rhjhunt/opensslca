@@ -4,15 +4,12 @@ galaxy_info:
 
   license: GPL-3.0-only
 
-  min_ansible_version: 2.9
+  min_ansible_version: "2.9.10"
 
   platforms:
     - name: Fedora
       versions:
-        - 34
-        - 33
-        - 32
-        - 31
+        - all
     - name: Ubuntu
       versions:
         - focal
@@ -20,8 +17,9 @@ galaxy_info:
         - xenial
     - name: EL
       versions:
-        - 8
-        - 7
+        - "7"
+        - "8"
+        - "9"
 
   galaxy_tags:
     - openssl
