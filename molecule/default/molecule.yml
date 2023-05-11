@@ -2,14 +2,11 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
+  name: podman
+lint: ansible-lint
 platforms:
-  - name: instance
-    image: centos:8
+  - name: certtest
+    image: quay.io/centos/centos:stream8
     command: /sbin/init
     tmpfs:
       - /run
