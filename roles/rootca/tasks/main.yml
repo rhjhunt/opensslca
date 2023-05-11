@@ -1,6 +1,6 @@
 ---
 - name: Create directories
-  file:
+  ansible.builtin.file:
     path: "/etc/pki/CA/{{ item }}"
     state: directory
     owner: root
@@ -13,7 +13,7 @@
     - csr
 
 - name: Create private directory
-  file:
+  ansible.builtin.file:
     path: /etc/pki/CA/private
     state: directory
     owner: root
@@ -21,12 +21,12 @@
     mode: '0700'
 
 - name: Verify index.txt file exists
-  stat:
+  ansible.builtin.stat:
     path: /etc/pki/CA/index.txt
   register: index_exists
 
 - name: Create index.txt file
-  file:
+  ansible.builtin.file:
     path: /etc/pki/CA/index.txt
     state: touch
     owner: root
@@ -35,24 +35,24 @@
   when: not index_exists.stat.exists
 
 - name: Verify CA serial file exists
-  stat:
+  ansible.builtin.stat:
     path: /etc/pki/CA/serial
   register: serial_exists
 
 - name: Create CA serial file if it doesn't exist
-  copy:
+  ansible.builtin.copy:
     dest: /etc/pki/CA/serial
     content: '1000'
     mode: '0644'
   when: not serial_exists.stat.exists
 
 - name: Verify CA crlnumber file exists
-  stat:
+  ansible.builtin.stat:
     path: /etc/pki/CA/crlnumber
   register: crlnumber_exists
 
 - name: Create CA crlnumber file if it doesn't exist
-  copy:
+  ansible.builtin.copy:
     dest: /etc/pki/CA/crlnumber
     content: '1000'
     mode: '0644'
