@@ -4,12 +4,12 @@ Create private and public keys for a client.
 
 ## Role Variables
 
-`clientcert_hostname` : Hostname of client.
+`clientcert_hostname` : Host name of client.
 `clientcert_country` : Country 2 character abbreviation.
 `clientcert_email` : Email for certificate.
 `clientcert_state_or_province` : State or Provice for certificate.
 `clientcert_org` : Organization for certificate.
-`clientcert_state` : If `present` certificate is created, if `absent` certificate is removed.
+`clientcert_state` : If `present` creates certificate, if `absent` removes certificate.
 
 ## Example Playbook
 

@@ -4,7 +4,7 @@ Ansible Collection to create an OpenSSL Certificate Authority and sign client ce
 
 ## Ansible Version Compatibility
 
-The collection has been tested with Ansible versions **>=2.9.10**.
+The collection was tested with Ansible versions **>=2.9.10**.
 
 ## Requirements
 
