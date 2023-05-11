@@ -29,8 +29,8 @@ Parameters
 +----------------------------------+---------------+-----------------------------------------+
 | **rootca_org**                   |               | Organization for certificate.           |
 +----------------------------------+---------------+-----------------------------------------+
-| **rootca_state**                 | present       | If **present** certificate is created.  |
-|                                  |               | If **absent** certificate is removed.   |
+| **rootca_state**                 | present       | If **present** create certificate.      |
+|                                  |               | If **absent** remove certificate.       |
 +----------------------------------+---------------+-----------------------------------------+
 
 Examples
