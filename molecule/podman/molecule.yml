@@ -8,7 +8,7 @@ lint: |
   yamllint .
 platforms:
   - name: instance
-    image: centos:8
+    image: quay.io/centos/centos:stream8
     command: /sbin/init
     tmpfs:
       - /run
