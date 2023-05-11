@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         scenario:
-          - centos-7
           - centos-8
     steps:
       - name: Checkout
