@@ -8,11 +8,12 @@ authors:
 description: Collection to create an OpenSSL Certificate Authority and sign client certificates
 license:
   - GPL-3.0-or-later
-license_file: null
+license_file: LICENSE
 tags:
   - openssl
   - certificateauthority
   - certificate
+  - security
 dependencies:
   community.crypto: '>=1.6.0'
 repository: https://github.com/rhjhunt/opensslca
