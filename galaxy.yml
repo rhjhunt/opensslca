@@ -29,3 +29,4 @@ build_ignore:
   - '*.tar.gz'
   - venv/
   - molecule/
+  - requirements.txt
