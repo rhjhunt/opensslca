@@ -17,7 +17,8 @@
         passphrase: changeme
       register: ca_priv_result
 
-    - assert:
+    - name: Verify that the CA certificate vaules match
+      ansible.builtin.assert:
         that:
           - ca_result.public_key == ca_priv_result.public_key
           - "ca_result.signature_algorithm == 'sha256WithRSAEncryption' or ca_result.signature_algorithm == 'sha512WithRSAEncryption'"
@@ -40,7 +41,8 @@
         path: "/etc/pki/CA/private/{{ clientcert_hostname }}.key.pem"
       register: client_priv_result
 
-    - assert:
+    - name: Verify that the client certificate vaules match
+      ansible.builtin.assert:
         that:
           - client_result.public_key == client_priv_result.public_key
           - "client_result.signature_algorithm == 'sha256WithRSAEncryption' or client_result.signature_algorithm == 'sha512WithRSAEncryption'"

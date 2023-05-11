@@ -4,7 +4,7 @@
   tasks:
 
     - name: "Include opensslca"
-      import_role:
+      ansible.builtin.import_role:
         name: rootca
       vars:
         rootca_country: US
@@ -14,7 +14,7 @@
         rootca_password: changeme
 
     - name: "Create client certificate"
-      import_role:
+      ansible.builtin.import_role:
         name: clientcert
       vars:
         clientcert_country: US
