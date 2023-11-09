@@ -1,0 +1,26 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+
+    - name: "Include opensslca"
+      ansible.builtin.import_role:
+        name: rootca
+      vars:
+        rootca_country: US
+        rootca_email: admin@example.com
+        rootca_state_or_province: CA
+        rootca_org: Example
+        rootca_password: changeme
+
+    - name: "Create client certificate"
+      ansible.builtin.import_role:
+        name: clientcert
+      vars:
+        clientcert_country: US
+        clientcert_email: admin@example.com
+        clientcert_state_or_province: CA
+        clientcert_org: Example
+        rootca_password: changeme
+        clientcert_hostname: server.example.com
+...
