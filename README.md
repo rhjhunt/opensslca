@@ -10,8 +10,8 @@ The collection was tested with Ansible versions **>=2.9.10**.
 
 The below Python module requirements are needed on the host that executes this collection.
 
-* Either cryptography >= 1.2.3
-* Or pyOpenSSL
+* Either `cryptography` >= 1.2.3
+* Or `pyOpenSSL`
 
 ## Installing The Collection
 

@@ -95,3 +95,4 @@
     provider: selfsigned
     mode: '0444'
     state: "{{ rootca_state }}"
+...

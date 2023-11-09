@@ -50,7 +50,7 @@ Examples
             clientcert_org: Example Inc.
             rootca_password: changeme
             clientcert_hostname: server.example.com
-            
+
 Authors
 ~~~~~~~
 

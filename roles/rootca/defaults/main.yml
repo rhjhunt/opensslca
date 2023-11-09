@@ -16,3 +16,4 @@ rootca_password: "changeme"
 
 # Certificate Authority state:
 rootca_state: present
+...

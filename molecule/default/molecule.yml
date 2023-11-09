@@ -5,7 +5,7 @@ driver:
   name: podman
 lint: ansible-lint
 platforms:
-  - name: certtest
+  - name: centos8
     image: quay.io/centos/centos:stream8
     command: /sbin/init
     tmpfs:
@@ -15,7 +15,36 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
+    groups:
+      - centos
+  - name: fedora38
+    image: registry.fedoraproject.org/fedora:38
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+    groups:
+      - fedora
+  - name: lunar
+    image: docker.io/library/ubuntu:lunar
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+    groups:
+      - ubuntu
 provisioner:
   name: ansible
+  inventory:
+    host_vars:
+      ubuntu:
+
 verifier:
   name: ansible
+...

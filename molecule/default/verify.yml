@@ -49,10 +49,9 @@
           - "client_result.subject.commonName == 'server.example.com'"
           - "client_result.subject | length == 5"
           - "client_result.issuer.commonName == 'Certificate Authority'"
-          - "client_result.issuer | length == 5" 
+          - "client_result.issuer | length == 5"
           - not client_result.expired
           - client_result.version == 3
           - "'Key Encipherment' in client_result.key_usage"
-          - "client_result.key_usage | length == 4" 
-
-        
+          - "client_result.key_usage | length == 4"
+...

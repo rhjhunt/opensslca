@@ -7,3 +7,13 @@
       ansible.builtin.dnf:
         name: python3-cryptography
         state: present
+
+- name: Install python for ubuntu
+  hosts: ubuntu
+  tasks:
+
+    - name: Install python
+      ansible.builtin.apt:
+        name: python3
+        state: present
+...

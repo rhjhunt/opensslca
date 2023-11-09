@@ -38,3 +38,4 @@
     ownca_not_after: +3650d
     mode: '0444'
     state: "{{ clientcert_state }}"
+...
