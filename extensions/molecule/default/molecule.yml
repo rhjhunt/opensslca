@@ -4,7 +4,11 @@ dependency:
   options:
     requirements-file: requirements.yml
 driver:
-  name: podman
+  options:
+    managed: false
+    login_cmd_template: "podman exec -ti {instance} bash"
+    ansible_connection_options:
+      ansible_connection: podman
 platforms:
   - name: rhel8
     image: registry.access.redhat.com/ubi8
