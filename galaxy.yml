@@ -1,7 +1,7 @@
 ---
 namespace: rhjhunt
 name: opensslca
-version: 1.0.2
+version: 1.0.3
 readme: README.md
 authors:
   - Jacob Hunt (https://github.com/rhjhunt)
@@ -23,11 +23,12 @@ issues: https://github.com/rhjhunt/opensslca/issues
 build_ignore:
   - .vale.ini
   - .yamllint
-  - .markdownlint.json
+  - .markdownlint.yml
+  - .pre-commit-config.yaml
   - .github
   - .gitignore
   - '*.tar.gz'
   - venv/
-  - molecule/
-  - requirements.txt
+  - extensions/
+  - test-requirements.txt
 ...
