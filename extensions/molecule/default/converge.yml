@@ -15,8 +15,7 @@
 - name: Converge
   hosts: molecule
   tasks:
-
-    - name: "Include opensslca"
+    - name: Include opensslca
       ansible.builtin.import_role:
         name: rootca
       vars:
@@ -26,7 +25,7 @@
         rootca_org: Example
         rootca_password: changeme
 
-    - name: "Create client certificate"
+    - name: Create client certificate
       ansible.builtin.import_role:
         name: clientcert
       vars:
@@ -36,4 +35,3 @@
         clientcert_org: Example
         rootca_password: changeme
         clientcert_hostname: server.example.com
-...

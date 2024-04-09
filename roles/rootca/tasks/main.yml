@@ -1,11 +1,11 @@
 ---
 - name: Create directories
   ansible.builtin.file:
-    path: "/etc/pki/CA/{{ item }}"
+    path: /etc/pki/CA/{{ item }}
     state: directory
     owner: root
     group: root
-    mode: '0755'
+    mode: "0755"
   loop:
     - certs
     - crl
@@ -18,7 +18,7 @@
     state: directory
     owner: root
     group: root
-    mode: '0700'
+    mode: "0700"
 
 - name: Verify index.txt file exists
   ansible.builtin.stat:
@@ -31,7 +31,7 @@
     state: touch
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
   when: not index_exists.stat.exists
 
 - name: Verify CA serial file exists
@@ -42,8 +42,8 @@
 - name: Create CA serial file if it doesn't exist
   ansible.builtin.copy:
     dest: /etc/pki/CA/serial
-    content: '1000'
-    mode: '0644'
+    content: "1000"
+    mode: "0644"
   when: not serial_exists.stat.exists
 
 - name: Verify CA crlnumber file exists
@@ -54,8 +54,8 @@
 - name: Create CA crlnumber file if it doesn't exist
   ansible.builtin.copy:
     dest: /etc/pki/CA/crlnumber
-    content: '1000'
-    mode: '0644'
+    content: "1000"
+    mode: "0644"
   when: not crlnumber_exists.stat.exists
 
 - name: Create CA root key
@@ -64,7 +64,7 @@
     cipher: auto
     select_crypto_backend: auto
     passphrase: "{{ rootca_password }}"
-    mode: '0400'
+    mode: "0400"
     state: "{{ rootca_state }}"
 
 - name: Create CA CSR for self-signed certificate
@@ -75,7 +75,7 @@
     common_name: Certificate Authority
     use_common_name_for_san: false
     basic_constraints:
-      - 'CA:TRUE'
+      - CA:TRUE
     basic_constraints_critical: true
     key_usage:
       - keyCertSign
@@ -93,6 +93,5 @@
     privatekey_path: /etc/pki/CA/private/ca.key.pem
     privatekey_passphrase: "{{ rootca_password }}"
     provider: selfsigned
-    mode: '0444'
+    mode: "0444"
     state: "{{ rootca_state }}"
-...

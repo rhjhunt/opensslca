@@ -3,9 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
-
     - name: Install python3-cryptography package
       ansible.builtin.dnf:
         name: python3-cryptography
         state: present
-...
