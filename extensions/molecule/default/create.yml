@@ -79,4 +79,3 @@
     - name: Display uname info
       ansible.builtin.debug:
         msg: "{{ result.stdout }}"
-...

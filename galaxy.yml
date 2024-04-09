@@ -15,9 +15,9 @@ tags:
   - certificate
   - security
 dependencies:
-  community.crypto: '>=1.6.0'
+  community.crypto: ">=1.6.0"
 repository: https://github.com/rhjhunt/opensslca
-documentation: ''
+documentation: ""
 homepage: https://github.com/rhjhunt/opensslca
 issues: https://github.com/rhjhunt/opensslca/issues
 build_ignore:
@@ -27,8 +27,7 @@ build_ignore:
   - .pre-commit-config.yaml
   - .github
   - .gitignore
-  - '*.tar.gz'
+  - "*.tar.gz"
   - venv/
   - extensions/
   - test-requirements.txt
-...

@@ -12,8 +12,7 @@ rootca_state_or_province: ""
 rootca_org: ""
 
 # CA password
-rootca_password: "changeme"
+rootca_password: changeme
 
 # Certificate Authority state:
 rootca_state: present
-...

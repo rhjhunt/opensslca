@@ -16,4 +16,3 @@ clientcert_org: ""
 
 # Client certificate state
 clientcert_state: present
-...
