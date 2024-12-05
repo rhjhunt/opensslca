@@ -71,7 +71,7 @@
   community.crypto.openssl_csr:
     path: /etc/pki/CA/csr/ca.cert.csr
     privatekey_path: /etc/pki/CA/private/ca.key.pem
-    privatekey_passphrase: changeme
+    privatekey_passphrase: "{{ rootca_password }}"
     common_name: Certificate Authority
     use_common_name_for_san: false
     basic_constraints:
@@ -95,4 +95,3 @@
     provider: selfsigned
     mode: '0444'
     state: "{{ rootca_state }}"
-...
