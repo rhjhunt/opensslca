@@ -38,3 +38,8 @@
     mode: '0444'
     state: "{{ clientcert_state }}"
 
+- name: Concatenate certificate and key files
+  ansible.builtin.shell: |
+    cat /etc/pki/CA/certs/{{ clientcert_hostname }}.cert.pem \
+        /etc/pki/CA/private/{{ clientcert_hostname }}.key.pem \
+        > /etc/pki/CA/certs/{{ clientcert_hostname }}-combined.cert.pem
