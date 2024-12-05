@@ -20,8 +20,7 @@
       - keyEncipherment
       - keyAgreement
     key_usage_critical: true
-    extended_key_usage:
-      - serverAuth
+    extended_key_usage: "{{ clientcert_eku }}"
     extended_key_usage_critical: true
     digest: sha256
     subject_alt_name:
@@ -38,4 +37,4 @@
     ownca_not_after: +3650d
     mode: '0444'
     state: "{{ clientcert_state }}"
-...
+

@@ -16,4 +16,6 @@ clientcert_org: ""
 
 # Client certificate state
 clientcert_state: present
-...
+
+# Client certificate extended key usage
+clientcert_eku: ['serverAuth', 'clientAuth']
