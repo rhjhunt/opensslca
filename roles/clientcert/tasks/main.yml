@@ -20,8 +20,7 @@
       - keyEncipherment
       - keyAgreement
     key_usage_critical: true
-    extended_key_usage:
-      - serverAuth
+    extended_key_usage: "{{ clientcert_eku }}"
     extended_key_usage_critical: true
     digest: sha256
     subject_alt_name:
@@ -38,4 +37,9 @@
     ownca_not_after: +3650d
     mode: '0444'
     state: "{{ clientcert_state }}"
-...
+
+- name: Concatenate certificate and key files
+  ansible.builtin.shell: |
+    cat /etc/pki/CA/certs/{{ clientcert_hostname }}.cert.pem \
+        /etc/pki/CA/private/{{ clientcert_hostname }}.key.pem \
+        > /etc/pki/CA/certs/{{ clientcert_hostname }}-combined.cert.pem
