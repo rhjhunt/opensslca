@@ -10,20 +10,8 @@ driver:
     ansible_connection_options:
       ansible_connection: podman
 platforms:
-  - name: rhel8
-    image: registry.access.redhat.com/ubi8
-    command: /sbin/init
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-    groups:
-      - rhel
-  - name: fedora39
-    image: registry.fedoraproject.org/fedora:39
+  - name: fedora42
+    image: registry.fedoraproject.org/fedora:42
     tmpfs:
       - /run
       - /tmp
@@ -44,6 +32,28 @@ platforms:
     pre_build_image: true
     groups:
       - rhel
+  - name: rhel10
+    image: registry.access.redhat.com/ubi10
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+    groups:
+      - rhel
+  - name: ubuntu2404
+    image: docker.io/library/ubuntu:24.04
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+    groups:
+      - ubuntu
 provisioner:
   name: ansible
 verifier:
